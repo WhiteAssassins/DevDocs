@@ -42,7 +42,16 @@ class Home extends CI_Controller {
         $nombre = trim((string) $this->input->post('nombre', TRUE));
         $pass = $this->input->post('pass');
         $pass1 = $this->input->post('pass1');
-        if ($nombre !== '' && $pass !== '' && $pass === $pass1) {
+        $users_count = $this->db->count_all('usuarios');
+        $can_register = ($users_count === 0) || (bool) $this->session->userdata('username');
+
+        if ($can_register && $nombre !== '' && $pass !== '' && $pass === $pass1) {
+            $exists = $this->db->get_where('usuarios', array('nombre' => $nombre), 1)->row_array();
+            if ($exists) {
+                redirect('/');
+                return;
+            }
+
             $users = array(
                 'nombre' => $nombre,
                 'pass' => password_hash($pass, PASSWORD_DEFAULT),
@@ -54,9 +63,11 @@ class Home extends CI_Controller {
     public function visitas(){
         $id= (int) $this->input->post('id');
         $this->db->where('id',$id);
-        $direccion= ltrim((string) $this->input->post('direccion', TRUE), '/\\');
+        $direccion= trim((string) $this->input->post('direccion', TRUE));
         $visitas= (int) $this->input->post('visitas');
-        $url= "../docs/".$direccion;
+        $url = preg_match('#^https?://#i', $direccion)
+            ? $direccion
+            : base_url('docs/'.ltrim($direccion, '/\\'));
         $datos = array (
             'visitas' => $visitas+1,
            );

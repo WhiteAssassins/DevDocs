@@ -149,8 +149,8 @@
                         <td><?php echo $key['id']; ?></td>
                             <td><?php echo $key['nombre']; ?></td>
                             <td><?php echo $key['descripcion']; ?>Direccion</td>
-                            <td><img class="img-docs-admin" src="<?php echo base_url()?>img/<?php echo $key['imagen']; ?>"></td>
-                            <td><button class="btn"><a href="docs/<?php echo $key['direccion']; ?>">Direccion </button></a></td>
+                            <td><img class="img-docs-admin" src="<?php echo base_url('public/img/'.html_escape($key['imagen'])); ?>" alt="<?php echo html_escape($key['nombre']); ?>"></td>
+                            <td><a class="btn" href="<?php echo preg_match('#^https?://#i', $key['direccion']) ? html_escape($key['direccion']) : base_url('docs/'.html_escape($key['direccion'])); ?>">Direccion</a></td>
                             <td><?php echo $key['idioma']; ?></td>
                             <td><?php echo $key['tipo']; ?></td>
                             <td><span class="badge badge-pill badge-danger"><form method="post" action="admin/deldoc"><input type="hidden" name="nombre" value="<?php echo $key['nombre'];?>"><button type="submit" class="sort-red"><span class="fa fa-trash"></button></form></a></span></td>

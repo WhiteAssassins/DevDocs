@@ -30,13 +30,18 @@
                 </a>
             </li>
             <?php
-                if(!$this->session->userdata('username')){
+                $show_registration = !$this->session->userdata('username') && ((int) $this->db->count_all('usuarios') === 0);
+                if($show_registration){
             ?>
-            <li class="nav-item">
+                <li class="nav-item">
                     <a class="nav-link waves-effect btn_modal_reg waves-light">
                     <i class="fa fa-user"></i> Registro
                     </a>
                 </li>
+            <?php
+                }
+                if(!$this->session->userdata('username')){
+            ?>
                 <li class="nav-item">
                     <a class="nav-link waves-effect btn_modal_login waves-light">
                     <i class="fa fa-user"></i> Login

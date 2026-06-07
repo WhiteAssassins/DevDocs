@@ -15,11 +15,11 @@
         ?>
 
             <div class="card z-depth-5" style="width: 20rem;">
-                <img class="card-img-top" src="<?php echo base_url(); ?>img/<?php echo html_escape($key['imagen']); ?>" alt="<?php echo html_escape($key['nombre']); ?>">
+                <img class="card-img-top" src="<?php echo base_url('public/img/'.html_escape($key['imagen'])); ?>" alt="<?php echo html_escape($key['nombre']); ?>">
                 <div class="card-body">
                     <h5 class="card-title"><?php echo html_escape($key['nombre']); ?></h5><span class="badge badge-pill badge-danger"><?php echo html_escape($key['idioma']); ?></span><span class="badge badge-pill badge-info"><?php echo html_escape($key['tipo']); ?></span>
                     <p class="card-text"><?php echo html_escape($key['descripcion']); ?></p>
-                    <a href="<?php echo base_url(); ?>docs/<?php echo html_escape($key['direccion']); ?>" class="btn btn-info btn-rounded waves-effect waves-light">Ver documentación</a>
+                    <a href="<?php echo preg_match('#^https?://#i', $key['direccion']) ? html_escape($key['direccion']) : base_url('docs/'.html_escape($key['direccion'])); ?>" class="btn btn-info btn-rounded waves-effect waves-light">Ver documentación</a>
                 </div>
             </div>
         <?php

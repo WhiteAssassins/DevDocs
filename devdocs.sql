@@ -15,7 +15,7 @@ CREATE TABLE IF NOT EXISTS `docs` (
   `nombre` varchar(180) NOT NULL,
   `descripcion` text NOT NULL,
   `imagen` varchar(255) NOT NULL,
-  `direccion` varchar(255) NOT NULL,
+  `direccion` varchar(500) NOT NULL,
   `idioma` varchar(80) NOT NULL,
   `tipo` varchar(120) NOT NULL,
   `visitas` int(11) NOT NULL DEFAULT 0
@@ -42,7 +42,7 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 INSERT INTO `docs` (`id`, `nombre`, `descripcion`, `imagen`, `direccion`, `idioma`, `tipo`, `visitas`) VALUES
-(1, 'CodeIgniter', 'Documentacion de CodeIgniter incluida como ejemplo.', 'codeigniter.svg', 'codeigniter/index.html', 'Ingles', 'Programacion', 0);
+(1, 'CodeIgniter', 'Documentacion de CodeIgniter incluida como ejemplo.', 'codeigniter.svg', 'https://codeigniter.com/userguide3/', 'Ingles', 'Programacion', 0);
 
 ALTER TABLE `docs`
   ADD PRIMARY KEY (`id`);

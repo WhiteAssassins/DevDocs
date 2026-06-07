@@ -8,7 +8,7 @@ class add_docs extends CI_Model {
             $ret['sms'] = 'Complete todos los campos';
         }else{
             
-            $config['upload_path'] = './img/';
+            $config['upload_path'] = './public/img/';
             $config['allowed_types'] = 'gif|jpg|jpeg|png|svg|webp';
             $config['max_size'] = 2048;
             $config['encrypt_name'] = TRUE;

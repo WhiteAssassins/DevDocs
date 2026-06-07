@@ -9,7 +9,7 @@
 
             <div class="card z-depth-5" style="width: 20rem;">
             
-                <img class="card-img-top" src="<?php echo base_url(); ?>img/<?php echo html_escape($key['imagen']); ?>" alt="<?php echo html_escape($key['nombre']); ?>">
+                <img class="card-img-top" src="<?php echo base_url('public/img/'.html_escape($key['imagen'])); ?>" alt="<?php echo html_escape($key['nombre']); ?>">
                 
                 <div class="card-body">
                     <h5 class="card-title"><?php echo html_escape($key['nombre']); ?></h5><span class="badge badge-pill badge-danger badge-home"><form method="post" action="<?php echo base_url('home/idioma'); ?>"><input type="hidden" name="idioma" value="<?php echo html_escape($key['idioma']); ?>"><button class="sort-red" type="submit"><?php echo html_escape($key['idioma']); ?></button></form></span>

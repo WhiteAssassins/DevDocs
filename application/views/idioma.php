@@ -14,11 +14,11 @@
         ?>
 
             <div class="card z-depth-5" style="width: 20rem;">
-                <img class="card-img-top" src="<?php echo base_url(); ?>img/<?php echo html_escape($key['imagen']); ?>" alt="<?php echo html_escape($key['nombre']); ?>">
+                <img class="card-img-top" src="<?php echo base_url('public/img/'.html_escape($key['imagen'])); ?>" alt="<?php echo html_escape($key['nombre']); ?>">
                 <div class="card-body">
                 <h5 class="card-title"><?php echo html_escape($key['nombre']); ?></h5><span class="badge badge-pill badge-danger badge-idioma"><form method="post" action="<?php echo base_url()?>home/idioma"><input type="hidden" name="idioma" value="<?php echo html_escape($key['idioma']); ?>"><button class="sort-red" type="submit"><?php echo html_escape($key['idioma']); ?></button></form></span><span class="badge badge-pill badge-info badge-idioma"><form method="post" action="<?php echo base_url()?>home/tipo"><input type="hidden" name="tipo" value="<?php echo html_escape($key['tipo']); ?>"><button class="sort-blue" type="submit"><?php echo html_escape($key['tipo']); ?></button></form></span>
                     <p class="card-text"><?php echo html_escape($key['descripcion']); ?></p>
-                    <a href="<?php echo base_url(); ?>docs/<?php echo html_escape($key['direccion']); ?>" class="btn btn-info btn-rounded waves-effect waves-light">Ver documentación</a>
+                    <a href="<?php echo preg_match('#^https?://#i', $key['direccion']) ? html_escape($key['direccion']) : base_url('docs/'.html_escape($key['direccion'])); ?>" class="btn btn-info btn-rounded waves-effect waves-light">Ver documentación</a>
                 </div>
             </div>
         <?php

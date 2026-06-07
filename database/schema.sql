@@ -15,7 +15,7 @@ CREATE TABLE IF NOT EXISTS `docs` (
   `nombre` varchar(180) NOT NULL,
   `descripcion` text NOT NULL,
   `imagen` varchar(255) NOT NULL,
-  `direccion` varchar(255) NOT NULL,
+  `direccion` varchar(500) NOT NULL,
   `idioma` varchar(80) NOT NULL,
   `tipo` varchar(120) NOT NULL,
   `visitas` int(11) NOT NULL DEFAULT 0

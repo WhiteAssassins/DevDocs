@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="<?php echo base_url('public/'); ?>css/mdb.css"> 
     <link rel="stylesheet" href="<?php echo base_url('public/'); ?>css/bootstrap.css">
     <link rel="stylesheet" href="<?php echo base_url('public/'); ?>css/main.css">
-    <link rel="icon" type="image/x-icon" href="<?php echo base_url(''); ?>img/favicon.ico">
+    <link rel="icon" type="image/svg+xml" href="<?php echo base_url('public/img/favicon.svg'); ?>">
 </head>
 <body class="body2">
 
