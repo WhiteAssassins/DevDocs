@@ -1,7 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="title desc">
-  <title id="title">CodeIgniter</title>
-  <desc id="desc">Icono de ejemplo para DevDocs.</desc>
-  <rect width="256" height="256" rx="32" fill="#f6f8fb"/>
-  <path d="M132 22c18 35-5 55-22 75-15 18-24 35-14 58 8 19 27 33 50 29 27-5 43-29 36-57 26 30 18 82-20 101-44 22-99-2-112-50-7-28 2-56 24-83 20-25 54-44 58-73z" fill="#dd4814"/>
-  <path d="M155 84c5 17-5 27-17 40-9 10-13 20-8 32 5 11 18 17 30 12 14-6 18-22 10-38 18 15 18 44 0 58-22 17-57 5-64-22-5-17 0-33 15-49 14-15 32-20 34-33z" fill="#ff7a30"/>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" aria-labelledby="title desc" role="img" viewBox="0 0 256 256"><title id="title">CodeIgniter</title><desc id="desc">Icono de ejemplo para DevDocs.</desc><rect width="256" height="256" fill="#f6f8fb" rx="32"/><path fill="#dd4814" d="M132 22c18 35-5 55-22 75-15 18-24 35-14 58 8 19 27 33 50 29 27-5 43-29 36-57 26 30 18 82-20 101-44 22-99-2-112-50-7-28 2-56 24-83 20-25 54-44 58-73z"/><path fill="#ff7a30" d="M155 84c5 17-5 27-17 40-9 10-13 20-8 32 5 11 18 17 30 12 14-6 18-22 10-38 18 15 18 44 0 58-22 17-57 5-64-22-5-17 0-33 15-49 14-15 32-20 34-33z"/></svg>
