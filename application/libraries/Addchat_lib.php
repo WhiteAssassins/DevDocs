@@ -7,7 +7,7 @@
  * This class handles all the functionality
  *
  * @package     addChat
- * @author      classiebit
+ * @author      Legacy AddChat integration
 **/
 
 class Addchat_lib 
@@ -2357,9 +2357,6 @@ class Addchat_lib
     private function demo_mode()
     {
         $domain = strtolower($_SERVER['SERVER_NAME']);
-        if (strpos($domain, 'classiebit.com') !== FALSE || strpos($domain, 'addchat-codeigniter.test') !== FALSE)
-            return true;
-        
         return FALSE;
 	}
 	

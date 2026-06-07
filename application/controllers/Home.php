@@ -7,17 +7,13 @@ class Home extends CI_Controller {
         $this->load->view('footer');
     }
     public function login(){
-        $nombre = $this->input->post('nombre');
-        $pass = $this->input->post('pass');
-        $where = [
-            'nombre'=>$nombre,
-            'pass'=>md5($pass)
-        ];
-        $this->db->where($where);
-        $resultado = $this->db->get('usuarios');
-        $num = $resultado->num_rows();
-        if($num == 0){
-            //no encontro el login
+        $nombre = trim((string) $this->input->post('nombre', TRUE));
+        $pass = (string) $this->input->post('pass');
+
+        $resultado = $this->db->get_where('usuarios', array('nombre' => $nombre), 1);
+        $usuario = $resultado->row_array();
+
+        if ( ! $usuario || ! $this->password_matches($pass, $usuario['pass'])){
             $this->load->view('header');
             $data = [
                 'sms'=>'Usted no es Administrador',
@@ -28,98 +24,86 @@ class Home extends CI_Controller {
             $this->load->view('home');
             $this->load->view('footer');
         }else{
-            $rest = $resultado->result_array();
+            if (password_get_info($usuario['pass'])['algo'] === 0) {
+                $this->db->where('id', $usuario['id']);
+                $this->db->update('usuarios', array('pass' => password_hash($pass, PASSWORD_DEFAULT)));
+            }
+
             $data = [
-                'username'=>$rest[0]['nombre'],
+                'username'=>$usuario['nombre'],
                 'login'=>true
             ];
             $this->session->set_userdata($data);
-            //echo $this->session->userdata('username');
-            $this->load->view('header');
-            $this->load->view('navbar');
-            $this->load->view('home');
-            $this->load->view('footer');
-            $base_url = base_url();
-            header("Location: $base_url");
+            redirect('/');
         }
     }
 
     public function reg(){
-        $nombre = $this->input->post('nombre');
+        $nombre = trim((string) $this->input->post('nombre', TRUE));
         $pass = $this->input->post('pass');
         $pass1 = $this->input->post('pass1');
-        if ($pass==$pass1) {
+        if ($nombre !== '' && $pass !== '' && $pass === $pass1) {
             $users = array(
                 'nombre' => $nombre,
-                'pass' => md5($pass), );
+                'pass' => password_hash($pass, PASSWORD_DEFAULT),
+            );
             $this->db->insert('usuarios', $users);
-            $base_url = base_url();
-            header("Location: $base_url");
-        }else{
-            
-            $base_url = base_url();
-            header("Location: $base_url");
         }
+        redirect('/');
     }
     public function visitas(){
-        $id= $this->input->post('id');
+        $id= (int) $this->input->post('id');
         $this->db->where('id',$id);
-        $direccion= $this->input->post('direccion');
-        $visitas= $this->input->post('visitas');
+        $direccion= ltrim((string) $this->input->post('direccion', TRUE), '/\\');
+        $visitas= (int) $this->input->post('visitas');
         $url= "../docs/".$direccion;
         $datos = array (
             'visitas' => $visitas+1,
            );
         $this->db->update('docs', $datos);
         $url;
-        header("Location: $url");
+        redirect($url);
     }    
     public function logout(){
         $this->session->sess_destroy();
-        $base_url = base_url();
-        header("Location: $base_url");
+        redirect('/');
     }
     public function pedido(){
-        $pedido['status'] = 0;
-        $nombre = $this->input->post('nombre');
-        $link = $this->input->post('link');
-        $idioma = $this->input->post('idioma');
+        $pedido = array('status' => 0);
+        $nombre = trim((string) $this->input->post('nombre', TRUE));
+        $link = trim((string) $this->input->post('link', TRUE));
+        $idioma = trim((string) $this->input->post('idioma', TRUE));
         if($nombre == '' || $link == '' || $idioma == ''){
             $pedido['sms'] = 'Complete todos los campos';
-
         }else{
-        
-        $datos = array (
-            'nombre' => $nombre,
-            'link' => $link,
-            'idioma' => $idioma,
-           );
-        $this->db->insert('pedidos', $datos);
-        $pedido['status'] = 200;
-        echo json_encode($pedido);
+            $datos = array (
+                'nombre' => $nombre,
+                'link' => $link,
+                'idioma' => $idioma,
+            );
+            $this->db->insert('pedidos', $datos);
+            $pedido['status'] = 200;
         }
+        $this->output->set_content_type('application/json')->set_output(json_encode($pedido));
            
     }
     public function qos(){
-        $qos['status'] = 0;
-        $nombre = $this->input->post('nombre');
-        $texto = $this->input->post('texto');
+        $qos = array('status' => 0);
+        $nombre = trim((string) $this->input->post('nombre', TRUE));
+        $texto = trim((string) $this->input->post('texto', TRUE));
         $ip = $this->input->ip_address();
         if($nombre == '' || $texto == ''){
-            $pedido['sms'] = 'Complete todos los campos';
-
+            $qos['sms'] = 'Complete todos los campos';
         }else{
-        
-        $datos = array (
-            'nombre' => $nombre,
-            'texto' => $texto,
-            'ip' => $ip,
-           );
-        $this->db->insert('qos', $datos);
-        $qos['status'] = 200;
-        echo json_encode($qos);
+            $datos = array (
+                'nombre' => $nombre,
+                'texto' => $texto,
+                'ip' => $ip,
+            );
+            $this->db->insert('qos', $datos);
+            $qos['status'] = 200;
         }
-           
+        $this->output->set_content_type('application/json')->set_output(json_encode($qos));
     }
     public function buscar(){
         $this->load->view('header');
@@ -140,5 +124,12 @@ class Home extends CI_Controller {
         $this->load->view('footer');
     }
    
+    private function password_matches($plain, $stored){
+        if (password_get_info($stored)['algo'] !== 0) {
+            return password_verify($plain, $stored);
+        }
+
+        return hash_equals((string) $stored, md5($plain));
+    }
     
 }

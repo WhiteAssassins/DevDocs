@@ -2,7 +2,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>DevDocs</title>
+    <meta name="author" content="WhiteAssassins">
+    <meta name="description" content="Archivo personal de documentaciones para desarrolladores mantenido por WhiteAssassins.">
+    <title>DevDocs | WhiteAssassins</title>
     <link rel="stylesheet" href="<?php echo base_url('public/'); ?>fontawesome/css/fontawesome.css">
 	<link rel="stylesheet" href="<?php echo base_url('public/'); ?>fontawesome/css/brands.css">
 	<link rel="stylesheet" href="<?php echo base_url('public/'); ?>fontawesome/css/solid.css">
@@ -11,23 +13,8 @@
     <link rel="stylesheet" href="<?php echo base_url('public/'); ?>css/addons-pro/timeline.min.css">
     <link rel="stylesheet" href="<?php echo base_url('public/'); ?>css/mdb.css"> 
     <link rel="stylesheet" href="<?php echo base_url('public/'); ?>css/bootstrap.css">
-    <link rel="stylesheet" href="<?php echo base_url('public/'); ?>css/animate.css">
     <link rel="stylesheet" href="<?php echo base_url('public/'); ?>css/main.css">
     <link rel="icon" type="image/x-icon" href="<?php echo base_url(''); ?>img/favicon.ico">
-    <link href="<?php echo base_url('assets/addchat/css/addchat.min.css') ?>" rel="stylesheet">
-<script type="text/javascript">
-  var _paq = window._paq = window._paq || [];
-  _paq.push(['trackPageView']);
-  _paq.push(['enableLinkTracking']);
-  (function() {
-    var u="//matomo.freedom.snet/";
-    _paq.push(['setTrackerUrl', u+'matomo.php']);
-    _paq.push(['setSiteId', '2']);
-    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
-    g.type='text/javascript'; g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
-  })();
-</script>
-
 </head>
 <body class="body2">
 

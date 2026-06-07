@@ -1,5 +1,5 @@
 -- DevDocs database schema
--- Public-safe dump for local development.
+-- Import with: mysql -u root -p devdocs < database/schema.sql
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -41,9 +41,6 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   `pass` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-INSERT INTO `docs` (`id`, `nombre`, `descripcion`, `imagen`, `direccion`, `idioma`, `tipo`, `visitas`) VALUES
-(1, 'CodeIgniter', 'Documentacion de CodeIgniter incluida como ejemplo.', 'codeigniter.svg', 'codeigniter/index.html', 'Ingles', 'Programacion', 0);
-
 ALTER TABLE `docs`
   ADD PRIMARY KEY (`id`);
 
@@ -58,7 +55,7 @@ ALTER TABLE `usuarios`
   ADD UNIQUE KEY `usuarios_nombre_unique` (`nombre`);
 
 ALTER TABLE `docs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 ALTER TABLE `pedidos`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;

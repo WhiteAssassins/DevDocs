@@ -7,24 +7,24 @@
             foreach ($rest as $key) {              
         ?>
 
-            <div class="card z-depth-5 animate__animated animate__swing" style="width: 20rem;">
+            <div class="card z-depth-5" style="width: 20rem;">
             
-                <img class="card-img-top  animate__animated animate__swing" src="<?php echo base_url(); ?>img/<?php echo $key['imagen']; ?>" alt="Card image cap">
+                <img class="card-img-top" src="<?php echo base_url(); ?>img/<?php echo html_escape($key['imagen']); ?>" alt="<?php echo html_escape($key['nombre']); ?>">
                 
                 <div class="card-body">
-                    <h5 class="card-title animate__animated animate__swing"><?php echo $key['nombre']; ?></h5><span class="badge badge-pill badge-danger badge-home animate__animated animate__swing"><form method="post" action="<?php echo base_url('home/idioma'); ?>"><input type="hidden" name="idioma" value="<?php echo $key['idioma']; ?>"><button class="sort-red" type="submit"><?php echo $key['idioma']; ?></button></form></span>
-                    <span class="badge badge-pill badge-info badge-home animate__animated animate__swing">
+                    <h5 class="card-title"><?php echo html_escape($key['nombre']); ?></h5><span class="badge badge-pill badge-danger badge-home"><form method="post" action="<?php echo base_url('home/idioma'); ?>"><input type="hidden" name="idioma" value="<?php echo html_escape($key['idioma']); ?>"><button class="sort-red" type="submit"><?php echo html_escape($key['idioma']); ?></button></form></span>
+                    <span class="badge badge-pill badge-info badge-home">
                         <form method="post" action="<?php echo base_url('home/tipo'); ?>">
-                        <input type="hidden" name="tipo" value="<?php echo $key['tipo']; ?>">
-                        <button class="sort-blue" type="submit"><?php echo $key['tipo']; ?></button>
+                        <input type="hidden" name="tipo" value="<?php echo html_escape($key['tipo']); ?>">
+                        <button class="sort-blue" type="submit"><?php echo html_escape($key['tipo']); ?></button>
                     </form>
                 </span>
-                    <p class="card-text animate__animated animate__swing"><?php echo $key['descripcion']; ?></p>
+                    <p class="card-text"><?php echo html_escape($key['descripcion']); ?></p>
                    <form method="post" action="home/visitas"> 
-                    <input type="hidden" name="id" value="<?php echo $key['id']; ?>">
-                    <input type="hidden" name="direccion" value="<?php echo $key['direccion']; ?>">
-                    <input type="hidden" name="visitas" value="<?php echo $key['visitas']; ?>">
-                    <button type="submit" href="docs/<?php echo $key['direccion']; ?>" class="btn btn-info btn-rounded waves-effect waves-light animate__animated animate__swing">Ver Documentacion</a></form>
+                    <input type="hidden" name="id" value="<?php echo (int) $key['id']; ?>">
+                    <input type="hidden" name="direccion" value="<?php echo html_escape($key['direccion']); ?>">
+                    <input type="hidden" name="visitas" value="<?php echo (int) $key['visitas']; ?>">
+                    <button type="submit" class="btn btn-info btn-rounded waves-effect waves-light">Ver documentación</button></form>
                     
                 </div>
                 <!p class="visitas">Visitas: <?php echo $key['visitas'];?></p>
@@ -32,13 +32,6 @@
         <?php
             }
         ?>
-         <div id="addchat_app" 
-            data-baseurl="<?php echo base_url() ?>"
-            data-csrfname="<?php echo $this->security->get_csrf_token_name() ?>"
-            data-csrftoken="<?php echo $this->security->get_csrf_hash() ?>"
-        ></div>
         </center>
     </div>
 </div>
-<script  type="module" src="<?php echo base_url('assets/addchat/js/addchat.min.js') ?>"></script>
-        <script nomodule src="<?php echo base_url('assets/addchat/js/addchat-legacy.min.js') ?>"></script>

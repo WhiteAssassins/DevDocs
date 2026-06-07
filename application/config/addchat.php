@@ -42,13 +42,13 @@ $config['addchat']			=  (object) [
      * widget_footer_url    : optional
      * 
     */
-    'widget_name'           => 'AddChat Codeigniter Pro',
+    'widget_name'           => 'DevDocs Chat',
     'widget_logo'           => 'addchat/img/addchat-logo-white.png',
     'widget_icon'           => 'addchat/img/addchat-shadow.png',
     'widget_user_avatar'    => 'addchat/img/avatar.png',
     'widget_notify_sound'   => 'addchat/sound/notification.mp3',
-    'widget_footer_text'    => 'AddChat | by Classiebit',
-    'widget_footer_url'     => 'https://classiebit.com/addchat-codeigniter-pro',
+    'widget_footer_text'    => 'WhiteAssassins',
+    'widget_footer_url'     => 'https://aewhitedevs.com',
 
    
     /**

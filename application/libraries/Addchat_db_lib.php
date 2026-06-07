@@ -6,7 +6,7 @@
  * This class handles database interraction
  *
  * @package     addChat
- * @author      classiebit
+ * @author      Legacy AddChat integration
 **/
 
 class Addchat_db_lib 

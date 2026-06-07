@@ -6,11 +6,9 @@
  * This class connect addChat to AddChat_lib
  *
  * @package     addchat
- * @author      classiebit
+ * @author      Legacy AddChat integration
 */
 
-header('Access-Control-Allow-Origin: *');
-header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
 header('content-type: application/json; charset=utf-8');
 
 class Addchat_api extends CI_Controller {

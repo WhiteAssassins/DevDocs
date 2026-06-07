@@ -8,36 +8,35 @@ class Admin extends CI_Controller {
             $this->load->view('footer');
 
         }else{
-            $base_url = base_url();
-            header("Location: $base_url");
+            redirect('/');
         }
 
           
     }   
     public function upload(){
         $this->load->model('add_docs');
-        $file_upload = $this->input->post('img_docs');
-        $nombre = $this->input->post('nombre');
-        $desc = $this->input->post('descripcion');
-        $dir = $this->input->post('direccion');
-        $idiomaa = $this->input->post('idiomaa');
-        $tipo = $this->input->post('tipo');
+        $file_upload = $this->input->post('img_docs', TRUE);
+        $nombre = $this->input->post('nombre', TRUE);
+        $desc = $this->input->post('descripcion', TRUE);
+        $dir = $this->input->post('direccion', TRUE);
+        $idiomaa = $this->input->post('idiomaa', TRUE);
+        $tipo = $this->input->post('tipo', TRUE);
         $this->add_docs->upload_file($file_upload,$nombre,$desc,$dir,$idiomaa,$tipo);
 
     }
     public function delpet(){
-        $nombre = $this->input->post('nombre');
+        $nombre = $this->input->post('nombre', TRUE);
         $this->db->delete('pedidos', array ('nombre' => $nombre)); 
         redirect('/admin');
         
     }
     public function deldoc(){
-        $nombre = $this->input->post('nombre');
+        $nombre = $this->input->post('nombre', TRUE);
         $this->db->delete('docs', array ('nombre' => $nombre)); 
         redirect('/admin');      
     }
     public function delqos(){
-        $id = $this->input->post('id');
+        $id = (int) $this->input->post('id');
         $this->db->delete('qos', array ('id' => $id)); 
         redirect('/admin');      
     }

@@ -6,9 +6,9 @@ $cant = $cantidad->num_rows();
 <footer class="page-footer font-small blue footer-bottom">
 
 
-<div class="footer-copyright text-center py-3">© 2021 Copyright:
-  <a href="#">WhiteAssassins</a>
-    Cantidad de Documentaciones <a href="#"><?php echo $cant;?></a>
+<div class="footer-copyright text-center py-3">© <?php echo date('Y'); ?> WhiteAssassins:
+  <a href="https://aewhitedevs.com" rel="noopener">aewhitedevs.com</a>
+    Documentaciones <a href="#"><?php echo $cant;?></a>
 </div>
 
 

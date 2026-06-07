@@ -2,15 +2,16 @@
 class add_docs extends CI_Model {
     
     public $ret = array();
-    //esto es un upload q yo ise viejo ya...fue la unica ves q use esa libreria
     function upload_file($file_upload,$nombre,$desc,$dir,$idiomaa,$tipo){
-        $ret['status'] = 0;
+        $ret = array('status' => 0);
         if($nombre == '' || $desc == '' || $dir == '' || $idiomaa == '' || $tipo == ''){
             $ret['sms'] = 'Complete todos los campos';
         }else{
             
             $config['upload_path'] = './img/';
-            $config['allowed_types'] = 'gif|jpg|png|pdf|docx|rar';
+            $config['allowed_types'] = 'gif|jpg|jpeg|png|svg|webp';
+            $config['max_size'] = 2048;
+            $config['encrypt_name'] = TRUE;
             $this->load->library('upload', $config);
             if ( ! $this->upload->do_upload('img_docs')){
                 $ret['sms'] = $this->upload->display_errors();
@@ -29,6 +30,6 @@ class add_docs extends CI_Model {
                 $ret['status'] = 200;
             }
         }
-        echo json_encode($ret);
+        $this->output->set_content_type('application/json')->set_output(json_encode($ret));
     }
 }

@@ -1,32 +1,26 @@
-<?php
-defined('BASEPATH') OR exit('No direct script access allowed');
-?>
-
-<div style="border:1px solid #990000;padding-left:20px;margin:0 0 10px 0;">
-
-<h4>An uncaught Exception was encountered</h4>
-
-<p>Type: <?php echo get_class($exception); ?></p>
-<p>Message: <?php echo $message; ?></p>
-<p>Filename: <?php echo $exception->getFile(); ?></p>
-<p>Line Number: <?php echo $exception->getLine(); ?></p>
-
-<?php if (defined('SHOW_DEBUG_BACKTRACE') && SHOW_DEBUG_BACKTRACE === TRUE): ?>
-
-	<p>Backtrace:</p>
-	<?php foreach ($exception->getTrace() as $error): ?>
-
-		<?php if (isset($error['file']) && strpos($error['file'], realpath(BASEPATH)) !== 0): ?>
-
-			<p style="margin-left:10px">
-			File: <?php echo $error['file']; ?><br />
-			Line: <?php echo $error['line']; ?><br />
-			Function: <?php echo $error['function']; ?>
-			</p>
-		<?php endif ?>
-
-	<?php endforeach ?>
-
-<?php endif ?>
-
-</div>
+<?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Excepción | DevDocs</title>
+	<style>
+		body { margin: 0; font-family: Arial, Helvetica, sans-serif; background: #f6f8fb; color: #1f2933; }
+		main { max-width: 920px; margin: 8vh auto; padding: 32px; background: #fff; border: 1px solid #d9e2ec; }
+		h1 { margin-top: 0; font-size: 28px; }
+		pre { overflow: auto; background: #f1f5f9; padding: 16px; }
+		a { color: #0b7285; }
+	</style>
+</head>
+<body>
+	<main>
+		<h1><?php echo html_escape($heading); ?></h1>
+		<p><?php echo html_escape($message); ?></p>
+		<?php if (ENVIRONMENT !== 'production'): ?>
+			<pre><?php echo html_escape($filepath.' : '.$line); ?></pre>
+		<?php endif; ?>
+		<p>WhiteAssassins · <a href="https://aewhitedevs.com" rel="noopener">aewhitedevs.com</a></p>
+	</main>
+</body>
+</html>

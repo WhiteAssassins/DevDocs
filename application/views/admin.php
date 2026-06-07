@@ -62,7 +62,7 @@
                     </button>
                 </div>
             <div class="modal-body mx-3">
-            <form action="<?php echo base_url('admin/upload'); ?>" id="form_upload_test" method="post">
+            <form action="<?php echo base_url('admin/upload'); ?>" id="form_upload_test" method="post" enctype="multipart/form-data">
                 <div class="md-form mb-5">
                     <i class="fas fa-file-text prefix grey-text"></i>
                     <input type="text" id="defaultForm-email" class="form-control validate" name="nombre">
@@ -243,14 +243,7 @@ $cantqos = $cantidadqos->num_rows();
             <div class="card text-white bg-info mb-3">
                 <div class="card-header"><i class="fas fa-eye"></i>Visitas de hoy</div>
             <div class="card-body">
-                <?php
-                   // use VisualAppeal\Matomo;
-                      //  $matomo = new Matomo('http://matomo.freedom.snet/', '28766214922d1b5080a232ecbc0acea6', 2);
-                       // $matomo->setFormat(Matomo::FORMAT_XML);
-                       // $matomo->setPeriod(Matomo::PERIOD_DAY);
-                       // $data = $matomo->getVisits();
-                ?>
-                <h3><?php //echo $data;?></h3>
+                <h3>No configurado</h3>
             </div>
         </div>
         </div>
@@ -258,12 +251,7 @@ $cantqos = $cantidadqos->num_rows();
             <div class="card text-white bg-info mb-3">
                 <div class="card-header"><i class="fas fa-eye"></i>Visitas Unicas</div>
             <div class="card-body">
-                <?php                  
-                   // $matomo->setFormat(Matomo::FORMAT_XML);
-                   // $matomo->setPeriod(Matomo::PERIOD_MONTH);
-                   // $data = $matomo->getUniqueVisitors();
-                ?>
-                <h3><?php// echo $data;?></h3>
+                <h3>No configurado</h3>
                 </div>
             </div>
         </div>
@@ -271,12 +259,7 @@ $cantqos = $cantidadqos->num_rows();
             <div class="card text-white bg-info mb-3">
                 <div class="card-header"><i class="fas fa-eye"></i>Visitas Totales</div>
             <div class="card-body">
-                <?php    
-                  //  $matomo->setFormat(Matomo::FORMAT_XML);
-                   // $matomo->setPeriod(Matomo::PERIOD_WEEK);
-                   // $data = $matomo->getVisits();
-                ?>
-                <h3><?php //echo $data;?></h3>
+                <h3>No configurado</h3>
                 </div>
             </div>
         </div>
@@ -284,12 +267,7 @@ $cantqos = $cantidadqos->num_rows();
             <div class="card text-white bg-info mb-3">
                 <div class="card-header"><i class="fas fa-eye"></i>Acciones</div>
             <div class="card-body">
-                <?php    
-                   // $matomo->setFormat(Matomo::FORMAT_XML);
-                    //$matomo->setPeriod(Matomo::PERIOD_MONTH);
-                    //$data = $matomo->getActions();
-                ?>
-                <h3><?php //echo $data;?></h3>
+                <h3>No configurado</h3>
                 </div>
             </div>
         </div>
